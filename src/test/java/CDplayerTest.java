@@ -80,4 +80,78 @@ public class CDplayerTest {
         player.changeCD(cd2);
         assertEquals(cd2, player.getCurrentCD());
     }
+
+    @Test
+    public void play(){
+        player.cdIn(cd1);
+        assertEquals("Playing TestCD1: Track 1", player.play());
+    }
+
+    @Test
+    public void noCDplay(){
+        assertEquals("NO CD", player.play());
+    }
+
+
+    @Test
+    public void pause(){
+        player.cdIn(cd1);
+        assertEquals("PAUSED", player.pause());
+    }
+
+    @Test
+    public void noCDpause(){
+        assertEquals("NO CD", player.pause());
+    }
+
+
+    @Test
+    public void stop(){
+        player.cdIn(cd1);
+        assertEquals("TestCD1: Track 1", player.stop());
+    }
+
+    @Test
+    public void noCDstop(){
+        assertEquals("NO CD", player.stop());
+    }
+
+
+    @Test
+    public void next(){
+        player.cdIn(cd1);
+        assertEquals("Playing TestCD1: Track 2", player.next());
+    }
+
+    @Test
+    public void nextLast(){
+        player.cdIn(cd1);
+        for (int i = 0; i < 9; i++) {
+            player.next();
+        }
+        assertEquals("Playing TestCD1: Track 1", player.next());
+    }
+
+    @Test
+    public void noCDnext(){
+        assertEquals("NO CD", player.next());
+    }
+
+
+    @Test
+    public void previous() {
+        player.cdIn(cd1);
+        player.next();
+        assertEquals("Playing TestCD1: Track 1", player.previous());
+    }
+    @Test
+    public void previousLast(){
+        player.cdIn(cd1);
+        assertEquals("Playing TestCD1: Track 10", player.previous());
+    }
+
+    @Test
+    public void noCDprevious(){
+        assertEquals("NO CD", player.play());
+    }
 }
