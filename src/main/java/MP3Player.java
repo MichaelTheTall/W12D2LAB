@@ -1,4 +1,4 @@
-public class MP3Player extends Component implements IButtons{
+public class MP3Player extends Component implements IButtons,IConnect{
 
     private int totalSongs;
     private int currentTrack;
@@ -43,5 +43,9 @@ public class MP3Player extends Component implements IButtons{
         }
         currentTrack -= 1;
         return "Playing Track " + currentTrack;
+    }
+
+    public String connect(Stereo stereo){
+        return "Connected to: " + stereo.getName();
     }
 }

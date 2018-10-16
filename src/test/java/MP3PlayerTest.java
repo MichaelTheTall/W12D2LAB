@@ -6,9 +6,17 @@ import static org.junit.Assert.assertEquals;
 public class MP3PlayerTest {
 
     MP3Player mp3;
+    Stereo stereo;
+    Radio radio;
+    CDplayer player;
+    AUX aux;
 
     @Before
     public void before(){
+        radio = new Radio("JVC", "1000", Station.RADIO1);
+        player = new CDplayer("Sony", "CD400", 2);
+        aux = new AUX("Samsung", "Input9000");
+        stereo = new Stereo("My Stereo","LG","TEST",radio,player,aux);
         mp3 = new MP3Player("LG", "musicBox", 10);
     }
 
@@ -37,6 +45,11 @@ public class MP3PlayerTest {
     public void volumeDn(){
         mp3.volumeDn();
         assertEquals(4, mp3.getVolume());
+    }
+
+    @Test
+    public void connect(){
+        assertEquals("Connected to: My Stereo", mp3.connect(stereo));
     }
 
     @Test
